@@ -1,0 +1,128 @@
+﻿@model IEnumerable<TI.Models.Utilizator>
+
+@{
+    ViewBag.Title = "Search employees";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search employees</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @using (Html.BeginForm("Search", "Employee", FormMethod.Get))
+    {
+        @Html.TextBox("name") <input type="submit" value="Search" />
+    }
+
+    <table class="table">
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3">No employee found</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nume)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prenume)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Functie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalarBaza)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Spor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PremiiBrute)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalBrut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrutImpozitabil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Virat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Impozit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CAS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CASS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Retineri)
+                </th>
+                <th></th>
+            </tr>
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Functie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalarBaza)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Spor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PremiiBrute)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalBrut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrutImpozitabil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Virat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Impozit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CAS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CASS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Retineri)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.NrCrt }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.NrCrt })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</body>
+</html>
